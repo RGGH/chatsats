@@ -56,7 +56,7 @@ async function sendQuery() {
     var uprompt = document.getElementById('uprompt').value;
 
     // API (FastAPI)
-    const url = 'http://127.0.0.1:5000/chat';
+    const url = '/chat';
 
     console.log(JSON.stringify({ "input": uprompt }))
 
