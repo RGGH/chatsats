@@ -23,10 +23,10 @@ const requestPayment = async () => {
         console.log(error);
     }
 
-    // if (!window.webln) {
-    //     alert("Please use a modern browser with webln: get the getalby.com extension");
-    //     return false;
-    // }
+    if (!window.webln) {
+        alert("Please use a modern browser with webln: get the getalby.com extension");
+        return false;
+    }
     const paymentRequest = await getInvoice();
     await webln.enable();
     const response = await webln.sendPayment(paymentRequest);
