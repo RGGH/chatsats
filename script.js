@@ -17,10 +17,10 @@ const getInvoice = async () => {
     try {
         const data = await postPreimage(preimage);
         console.log(data);
+        return preimage;
     } catch (error) {
         console.error(error);
     }
-    return !!data.invoice.pr;
 
 }
 
