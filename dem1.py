@@ -10,14 +10,25 @@ from lanarky import LangchainRouter
 load_dotenv()
 app = FastAPI()
 
+
 # check preimage
 @app.post("/preimages")
 async def create_preimage(preimage: str):
     # Connect to the database
-    conn = sqlite3.connect('preim.db')
+    conn = sqlite3.connect("preim.db")
 
     # Create a cursor object to execute SQL commands
     cursor = conn.cursor()
+
+    # Create the preimages table if not yet exisits
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS preimages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            preimage TEXT NOT NULL
+        )
+    """
+    )
 
     # Check if the preimage already exists
     cursor.execute("SELECT * FROM preimages WHERE preimage=?", (preimage,))
