@@ -8,7 +8,7 @@ const getInvoice = async () => {
     const recipient = "hello@getalby.com";
     const invoiceRes = await fetch(`https://lnaddressproxy.getalby.com/generate-invoice?amount=${amountMsat}&ln=${recipient}`);
     const data = await invoiceRes.json();
-    console.log(data);
+    console.log(data.invoice.pr);
     return data.invoice.pr;
 }
 
