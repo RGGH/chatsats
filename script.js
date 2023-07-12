@@ -74,8 +74,14 @@ async function sendQuery() {
     })
 
         .then(response => response.json())
-        .then(data => console.log(data))
-        .then(data => document.getElementById("reply").innerHTML = JSON.stringify(data));
+        .then(data => {
+            console.log(data); // Optional: Log the response data to the console
+            document.getElementById("reply").innerHTML = JSON.stringify(data);
+        })
+        .catch(error => {
+            console.error(error); // Handle any errors that occur during the fetch request
+        });
+
 
 
 
