@@ -74,11 +74,11 @@ async function sendQuery() {
     })
 
         .then(response => response.json())
-        .then(data => document.getElementById("reply").innerHTML = (data));
+        .then(data => console.log(data));
 
 
 
-    //console.log(res.text());
+
     //document.getElementById("reply").innerHTML = res.text();
 
 }
