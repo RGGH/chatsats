@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from langchain import ConversationChain
 from langchain.chat_models import ChatOpenAI
 import uvicorn
@@ -36,7 +36,7 @@ async def create_preimage(preimage: str):
 
     if existing_preimage:
         conn.close()
-        return {"message": "uhoh"}
+        raise HTTPException(status_code=409, detail="Preimage already exists")
 
     # Insert the new preimage into the database
     cursor.execute("INSERT INTO preimages (preimage) VALUES (?)", (preimage,))
