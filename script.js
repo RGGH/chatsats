@@ -73,7 +73,16 @@ async function sendQuery() {
 
     });
 
-    console.log(res.text());
+
+    const printAddress = async () => {
+        const a = await res;
+        console.log(a.text());
+    };
+
+    printAddress();
+
+
+    //console.log(res.text());
     //document.getElementById("reply").innerHTML = res.text();
 
 }
