@@ -2,13 +2,11 @@ import requests
 
 url = "http://127.0.0.1:5000/preimages"
 
-# Dummy data
-data = {"preimage": "dummy data"}
+# New preimage data
+data = {"preimage": "your_new_preimage"}
 
-# Send POST request
-response = requests.post(url, json=data)
+response = requests.post(url, data=data)
 
-# Check response
 if response.status_code == 200:
     print("Preimage created successfully")
 else:
