@@ -74,7 +74,7 @@ async function sendQuery() {
     })
 
         .then(response => response.json())
-        .then(data => console.log(data));
+        .then(data => document.getElementById("reply").innerHTML = (data));
 
 
 
