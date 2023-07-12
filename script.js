@@ -71,15 +71,10 @@ async function sendQuery() {
             "input": uprompt,
         })
 
-    });
+    }
+        .then(response => response.json())
+        .then(data => console.log(data)));
 
-
-    const printAddress = async () => {
-        const a = await res;
-        console.log(a.text());
-    };
-
-    printAddress();
 
 
     //console.log(res.text());
