@@ -74,7 +74,7 @@ async function sendQuery() {
     });
 
     console.log(res);
-    document.getElementById("reply").innerHTML = res;
+    document.getElementById("reply").innerHTML = res.text();
 
 }
 
