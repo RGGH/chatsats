@@ -76,7 +76,12 @@ async function sendQuery() {
         .then(response => response.json())
         .then(data => {
             console.log(data); // Optional: Log the response data to the console
-            document.getElementById("reply").innerHTML = JSON.stringify(data.response);
+
+            var str = JSON.stringify(data.response)
+            var newStr = str.replace(/(\r\n|\n|\r)/gm, "");
+            console.log(newStr);
+
+            document.getElementById("reply").innerHTML = newStr;
         })
         .catch(error => {
             console.error(error); // Handle any errors that occur during the fetch request
