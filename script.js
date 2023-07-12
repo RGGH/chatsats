@@ -11,10 +11,13 @@ const getInvoice = async () => {
 
     console.log("Preimage : " + data.invoice.pr);
     const preimage = 'lnbc10c1pj2a5j0pp5kn5ujru36wvv65peg848us3rsy3e7cr4l67d3957phyah4d0nncshp50kncf9zk35xg4lxewt4974ry6mudygsztsz8qn3ar8pn3mtpe50scqzzsxqyz5vqsp5t0lqm4cf363ec0n3c3630utmgtan0cy9sppedlvy490llpdngwqs9qyyssqrga269z8emnea2mrd7e9s3pucfs7zvhjz7w5s4vt5zgvpt7tf0r4j7ftgfle6w9pdfxd5khck0t6kxzyrjrtnneytgtsj6ljnewxjzcpasxa742';
-    postPreimage(preimage)
-        //postPreimage(data.invoice.pr)
-        .then(message => console.log(message))
-        .catch(error => console.error(error));
+
+    try {
+        const data = await postPreimage(preimage);
+        console.log(data);
+    } catch (error) {
+        console.error(error);
+    }
 
     return data.invoice.pr;
 }
@@ -95,26 +98,28 @@ async function sendQuery() {
 
 
 
-
-function postPreimage(preimage) {
+async function postPreimage(preimage) {
     const url = 'http://localhost:5000/preimages';
 
-    return fetch(`${url}?preimage=${encodeURIComponent(preimage)}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error(`Error: ${response.statusText}`);
+    try {
+        const response = await fetch(`${url}?preimage=${encodeURIComponent(preimage)}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             }
-        })
-        .catch(error => {
-            throw new Error(`Error: ${error.message}`);
         });
+
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+    } catch (error) {
+        throw new Error(`Error: ${error.message}`);
+    }
 }
+
+
+
 
 saveImgBtn.addEventListener("click", saveImage);
