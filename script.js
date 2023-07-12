@@ -20,8 +20,8 @@ const getInvoice = async () => {
     } catch (error) {
         console.error(error);
     }
+    return !!data.invoice.pr;
 
-    return data.invoice.pr;
 }
 
 const requestPayment = async () => {
