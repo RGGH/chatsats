@@ -8,6 +8,7 @@ const getInvoice = async () => {
     const recipient = "hello@getalby.com";
     const invoiceRes = await fetch(`https://lnaddressproxy.getalby.com/generate-invoice?amount=${amountMsat}&ln=${recipient}`);
     const data = await invoiceRes.json();
+    console.log(data);
     return data.invoice.pr;
 }
 
@@ -38,13 +39,13 @@ const requestPayment = async () => {
 // ---
 
 // Save image first requests a payment from the user
-// then downloads the image file
+// then makes the query to OpenAI
 const saveImage = async () => {
     const isPaid = await requestPayment();
     if (!isPaid) {
         return false;
     }
-    // do stuff
+    // if paid, send query
     sendQuery()
 
 }
@@ -54,8 +55,6 @@ const saveImage = async () => {
 async function sendQuery() {
 
     var uprompt = document.getElementById('uprompt').value;
-
-    // API (FastAPI)
     const url = '/chat';
 
     console.log(JSON.stringify({ "input": uprompt }))
@@ -75,21 +74,15 @@ async function sendQuery() {
 
         .then(response => response.json())
         .then(data => {
-            console.log(data); // Optional: Log the response data to the console
+            console.log(data);
             var str = JSON.stringify(data.response);
             var newStr = str.replace(/(\r\n|\n|\r)/gm, "");
             console.log(newStr);
             document.getElementById("reply").innerHTML = newStr;
         })
         .catch(error => {
-            console.error(error); // Handle any errors that occur during the fetch request
+            console.error(error);
         });
-
-
-
-
-
-    //document.getElementById("reply").innerHTML = res.text();
 
 }
 
