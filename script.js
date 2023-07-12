@@ -94,7 +94,7 @@ async function sendQuery() {
 
 
 
-function checkPreimage(preimage) {
+function postPreimage(preimage) {
     const url = 'http://localhost:5000/preimages';
 
     return fetch(`${url}?preimage=${encodeURIComponent(preimage)}`, {
@@ -105,7 +105,7 @@ function checkPreimage(preimage) {
     })
         .then(response => {
             if (response.ok) {
-                return 'Preimage created successfully';
+                return response.json();
             } else {
                 throw new Error(`Error: ${response.statusText}`);
             }
@@ -114,8 +114,5 @@ function checkPreimage(preimage) {
             throw new Error(`Error: ${error.message}`);
         });
 }
-
-
-
 
 saveImgBtn.addEventListener("click", saveImage);
