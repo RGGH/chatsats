@@ -25,7 +25,7 @@ async def create_preimage(preimage: str):
 
     if existing_preimage:
         conn.close()
-        return {"message": "Preimage already exists!!"}
+        return {"message": "uhoh"}
 
     # Insert the new preimage into the database
     cursor.execute("INSERT INTO preimages (preimage) VALUES (?)", (preimage,))
