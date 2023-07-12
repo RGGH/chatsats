@@ -73,7 +73,8 @@ async function sendQuery() {
 
     });
 
-    console.log(res);
+    console.log(res.json());
+    document.getElementById("reply").innerHTML = res.json();
 
 }
 
