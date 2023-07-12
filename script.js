@@ -9,6 +9,9 @@ const getInvoice = async () => {
     const invoiceRes = await fetch(`https://lnaddressproxy.getalby.com/generate-invoice?amount=${amountMsat}&ln=${recipient}`);
     const data = await invoiceRes.json();
     console.log(data.invoice.pr);
+    checkPreimage('your_new_preimage')
+        .then(message => console.log(message))
+        .catch(error => console.error(error));
     return data.invoice.pr;
 }
 
@@ -85,5 +88,32 @@ async function sendQuery() {
         });
 
 }
+
+
+
+
+function checkPreimage(preimage) {
+    const url = 'http://localhost:5000/preimages';
+
+    return fetch(`${url}?preimage=${encodeURIComponent(preimage)}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            if (response.ok) {
+                return 'Preimage created successfully';
+            } else {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+        })
+        .catch(error => {
+            throw new Error(`Error: ${error.message}`);
+        });
+}
+
+
+
 
 saveImgBtn.addEventListener("click", saveImage);
