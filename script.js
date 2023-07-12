@@ -1,7 +1,7 @@
 const saveImgBtn = document.querySelector(".save-img");
 
 // ---
-// LIGHTNING PAYMENT MAGIC 
+// LIGHTNING PAYMENT WebLN
 // ---
 const getInvoice = async () => {
     const amountMsat = 1000;
@@ -46,8 +46,11 @@ const requestPayment = async () => {
     return !!response.preimage;
 }
 // ---
-// LIGHTNING PAYMENT MAGIC 
+// LIGHTNING PAYMENT WebLN end
 // ---
+
+
+
 
 // Save image first requests a payment from the user
 // then makes the query to OpenAI
