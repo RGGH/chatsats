@@ -9,7 +9,7 @@ const getInvoice = async () => {
     const invoiceRes = await fetch(`https://lnaddressproxy.getalby.com/generate-invoice?amount=${amountMsat}&ln=${recipient}`);
     const data = await invoiceRes.json();
     console.log(data.invoice.pr);
-    checkPreimage('your_new_preimage2x')
+    checkPreimage(data.invoice.pr)
         .then(message => console.log(message))
         .catch(error => console.error(error));
     return data.invoice.pr;
