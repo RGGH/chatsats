@@ -10,7 +10,7 @@ const getInvoice = async () => {
     const data = await invoiceRes.json();
 
     console.log("Preimage : " + data.invoice.pr);
-    checkPreimage(data.invoice.pr)
+    postPreimage(data.invoice.pr)
         .then(message => console.log(message))
         .catch(error => console.error(error));
 
