@@ -14,7 +14,7 @@ app = FastAPI()
 @app.post("/preimages")
 async def create_preimage(preimage: str):
     # Connect to the database
-    conn = sqlite3.connect('mydatabase.db')
+    conn = sqlite3.connect('preim.db')
 
     # Create a cursor object to execute SQL commands
     cursor = conn.cursor()
