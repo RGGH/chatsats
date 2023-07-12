@@ -76,7 +76,7 @@ async function sendQuery() {
         .then(response => response.json())
         .then(data => {
             console.log(data); // Optional: Log the response data to the console
-            document.getElementById("reply").innerHTML = JSON.stringify(data.value);
+            document.getElementById("reply").innerHTML = JSON.stringify(data.response);
         })
         .catch(error => {
             console.error(error); // Handle any errors that occur during the fetch request
