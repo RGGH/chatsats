@@ -60,7 +60,7 @@ async function sendQuery() {
 
     console.log(JSON.stringify({ "input": uprompt }))
 
-    const res = await fetch(url, {
+    fetch(url, {
 
         method: "POST",
         headers: {
@@ -71,9 +71,10 @@ async function sendQuery() {
             "input": uprompt,
         })
 
-    }
+    })
+
         .then(response => response.json())
-        .then(data => console.log(data)));
+        .then(data => console.log(data));
 
 
 
