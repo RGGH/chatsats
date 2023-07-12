@@ -4,8 +4,8 @@ const saveImgBtn = document.querySelector(".save-img");
 // LIGHTNING PAYMENT MAGIC 
 // ---
 const getInvoice = async () => {
-    const amountMsat = 21000;
-    const recipient = "mrmoo@getalby.com";
+    const amountMsat = 1000;
+    const recipient = "hello@getalby.com";
     const invoiceRes = await fetch(`https://lnaddressproxy.getalby.com/generate-invoice?amount=${amountMsat}&ln=${recipient}`);
     const data = await invoiceRes.json();
     return data.invoice.pr;
@@ -76,12 +76,7 @@ async function sendQuery() {
         .then(response => response.json())
         .then(data => {
             console.log(data); // Optional: Log the response data to the console
-
-            var str = JSON.stringify(data.response)
-            var newStr = str.replace(/(\r\n|\n|\r)/gm, "");
-            console.log(newStr);
-
-            document.getElementById("reply").innerHTML = newStr;
+            document.getElementById("reply").innerHTML = JSON.stringify(data.response);
         })
         .catch(error => {
             console.error(error); // Handle any errors that occur during the fetch request
