@@ -5,7 +5,7 @@ const saveImgBtn = document.querySelector(".save-img");
 // ---
 const getInvoice = async () => {
     const amountMsat = 100000;
-    const recipient = "mrmoo@getalby.com";
+    const recipient = "redandgreen@getalby.com";
     const invoiceRes = await fetch(`https://lnaddressproxy.getalby.com/generate-invoice?amount=${amountMsat}&ln=${recipient}`);
     const data = await invoiceRes.json();
 
