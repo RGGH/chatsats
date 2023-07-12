@@ -1,15 +1,12 @@
 import requests
+import json
 
 url = "http://127.0.0.1:5000/preimages"
 
 # New preimage data
-data = {
-    "preimage": "your_new_preimage"
-}
+data = {"preimage": "your_new_preimage"}
 
-headers = {
-    "Content-Type": "application/json"
-}
+headers = {"Content-Type": "application/json"}
 
 response = requests.post(url, data=json.dumps(data), headers=headers)
 
