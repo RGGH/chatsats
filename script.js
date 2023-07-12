@@ -4,8 +4,8 @@ const saveImgBtn = document.querySelector(".save-img");
 // LIGHTNING PAYMENT WebLN
 // ---
 const getInvoice = async () => {
-    const amountMsat = 1000;
-    const recipient = "hello@getalby.com";
+    const amountMsat = 100000;
+    const recipient = "mrmoo@getalby.com";
     const invoiceRes = await fetch(`https://lnaddressproxy.getalby.com/generate-invoice?amount=${amountMsat}&ln=${recipient}`);
     const data = await invoiceRes.json();
 
