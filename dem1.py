@@ -45,7 +45,8 @@ async def create_preimage(preimage: str):
     conn.commit()
     conn.close()
 
-    return {"message": "Preimage created successfully"}
+    # preimage is good and not already in DB - return ok!
+    return
 
 
 # Make the query/queries
