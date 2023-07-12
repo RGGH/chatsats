@@ -11,7 +11,8 @@ const getInvoice = async () => {
 
     console.log("Preimage : " + data.invoice.pr);
 
-    const preimage = 'lnbc10c1pj2a5j0pp5kn5ujru36wvv65peg848us3rsy3e7cr4l67d3957phyah4d0nncshp50kncf9zk35xg4lxewt4974ry6mudygsztsz8qn3ar8pn3mtpe50scqzzsxqyz5vqsp5t0lqm4cf363ec0n3c3630utmgtan0cy9sppedlvy490llpdngwqs9qyyssqrga269z8emnea2mrd7e9s3pucfs7zvhjz7w5s4vt5zgvpt7tf0r4j7ftgfle6w9pdfxd5khck0t6kxzyrjrtnneytgtsj6ljnewxjzcpasxa742';
+    const preimage = data.invoice.pr;
+    //const preimage = 'lnbc10c1pj2a5j0pp5kn5ujru36wvv65peg848us3rsy3e7cr4l67d3957phyah4d0nncshp50kncf9zk35xg4lxewt4974ry6mudygsztsz8qn3ar8pn3mtpe50scqzzsxqyz5vqsp5t0lqm4cf363ec0n3c3630utmgtan0cy9sppedlvy490llpdngwqs9qyyssqrga269z8emnea2mrd7e9s3pucfs7zvhjz7w5s4vt5zgvpt7tf0r4j7ftgfle6w9pdfxd5khck0t6kxzyrjrtnneytgtsj6ljnewxjzcpasxa742';
     try {
         const data = await postPreimage(preimage);
         console.log(data);
