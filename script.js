@@ -73,13 +73,7 @@ async function sendQuery() {
 
     });
 
-    //console.log(res.text());
-    const printAnswer = async () => {
-        const answer = await res;
-        console.log(answer);
-    };
-
-    printAnswer();
+    console.log(res.text());
     //document.getElementById("reply").innerHTML = res.text();
 
 }
