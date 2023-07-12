@@ -46,7 +46,7 @@ async def create_preimage(preimage: str):
     conn.close()
 
     # preimage is good and not already in DB - return ok!
-    return
+    return 
 
 
 # Make the query/queries

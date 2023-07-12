@@ -99,7 +99,7 @@ async function sendQuery() {
 
 
 async function postPreimage(preimage) {
-    const url = 'http://localhost:5000/preimages';
+    const url = '/preimages';
 
     try {
         const response = await fetch(`${url}?preimage=${encodeURIComponent(preimage)}`, {
