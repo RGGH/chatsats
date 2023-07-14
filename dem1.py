@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, Response
+from fastapi import FastAPI, HTTPException, Response, Request
 from langchain import ConversationChain
 from langchain.chat_models import ChatOpenAI
 import uvicorn
@@ -67,6 +67,7 @@ async def create_preimage(preimage: str, response: Response):
     # preimage is good and not already in DB - return ok!
     return
 
+
 # middleware to get cookie secret to protect the API
 @app.middleware("http")
 async def verify_secret(request: Request, call_next):
@@ -83,7 +84,6 @@ async def verify_secret(request: Request, call_next):
         return response
 
     raise HTTPException(status_code=403, detail="Invalid secret")
-
 
 
 # Make the query/queries
