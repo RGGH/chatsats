@@ -4,6 +4,7 @@ from langchain import ConversationChain
 from langchain.chat_models import ChatOpenAI
 import uvicorn
 import sqlite3
+import secrets
 
 from lanarky import LangchainRouter
 
@@ -11,10 +12,20 @@ load_dotenv()
 app = FastAPI()
 
 
+def generate_secret():
+    # Generate a random secret using the secrets module
+    return secrets.token_hex(16)
+
+
 # check preimage
 @app.post("/preimages")
-async def create_preimage(preimage: str):
+async def create_preimage(preimage: str, response: Response):
     
+    # Generate a single-use secret/token
+    secret = generate_secret()
+    # Set the secret as a cookie
+    response.set_cookie(key="secret", value=secret, max_age=3600)
+
     # Connect to the database
     conn = sqlite3.connect("preim.db")
 
