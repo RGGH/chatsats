@@ -74,39 +74,13 @@ async def create_preimage(preimage: str, response: Response):
     return
 
 
-# middleware to get cookie secret to protect the API
-@app.middleware("http")
-async def verify_secret(request: Request, call_next):
-    if request.url.path == "/preimages":
-        # Skip the middleware for the /preimages endpoint
-        response = await call_next(request)
-        return response
-
-    secret = request.cookies.get("secret")
-
-    # Verify if the secret exists in the secrets_set
-    if secret in secrets_set:
-        # Remove the secret from the JSON payload
-        json_data = await request.json()
-        json_data.pop("secret", None)
-        request._json = json_data
-
-        response = await call_next(request)
-
-
-        # Make the query/queries
-        langchain_router = LangchainRouter(
-            langchain_url="/chat",
-            langchain_object=ConversationChain(llm=ChatOpenAI(temperature=0), verbose=True),
-            streaming_mode=0,
-        )
-        app.include_router(langchain_router)
-
-
-        return response
-
-    raise HTTPException(status_code=403, detail="Invalid secret")
-
+# Make the query/queries
+langchain_router = LangchainRouter(
+    langchain_url="/chat",
+    langchain_object=ConversationChain(llm=ChatOpenAI(temperature=0), verbose=True),
+    streaming_mode=0,
+)
+app.include_router(langchain_router)
 
 
 # main
