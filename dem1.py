@@ -78,7 +78,7 @@ async def verify_secret(request: Request, call_next):
 
     secret = request.cookies.get("secret")
 
-    # Verify if the secret exists in memory
+    # Verify if the secret exists in the secrets_set
     if secret in secrets_set:
         # Remove the secret from the JSON payload
         json_data = await request.json()
