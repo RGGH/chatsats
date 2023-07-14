@@ -72,7 +72,8 @@ async function sendQuery() {
         .then(data => {
             console.log(data);
             var str = JSON.stringify(data.response);
-            var newStr = str.replace(/(\r\n|\n|\r)/gm, "");
+            var newStr = str.replace(/(\r\n|\n|\r)/gm, "").replace(/"([^"]+)"/g, '$1');
+
             console.log(newStr);
             document.getElementById("reply").innerHTML = newStr;
             // Hide the spinner

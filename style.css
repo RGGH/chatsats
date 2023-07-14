@@ -3,8 +3,10 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-image: url('bg.jpg');
-    background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
 }
 
 .navbar {
@@ -15,6 +17,11 @@ body {
     align-items: center;
     padding: 0 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
 }
 
 .navbar a {
@@ -33,9 +40,34 @@ body {
     padding: 20px;
     margin-top: 100px;
     margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.8);
 }
+
+@media (max-width: 600px) {
+    .container {
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 20px;
+        width: calc(100% - 60px);
+        max-width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        height: 400px;
+    }
+}
+
+@media (max-width: 414px) {
+    .container {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+
+
 
 .banner {
     margin-bottom: 20px;
@@ -45,26 +77,37 @@ body {
     font-size: 18px;
 }
 
-.card {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 400px;
+.input-box {
+  height: 3em; /* Adjust the height as needed */
+  resize: vertical;
+  width: 80%;
+  padding: 10px;
+  margin: 0 auto 10px; /* Updated */
 }
 
-.row {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    flex-wrap: wrap;
+@media (max-width: 600px) {
+  .input-box {
+    height: 4em; /* Adjust the height as needed for mobile */
+  }
+}
+
+  
+  @media (max-width: 600px) {
+    .input-box {
+      height: 4em; /* Adjust the height as needed for mobile */
+    }
+  }
+
+@media (max-width: 600px) {
+  .input-box {
+    height: 4em; /* Adjust the height as needed for mobile */
+  }
 }
 
 input#uprompt {
-    font-size: 14px;
+    font-size: 16px;
     padding: 8px;
-    width: 100%;
+    width: 80%;
     box-sizing: border-box;
     border-radius: 4px;
     border: 1px solid #ccc;

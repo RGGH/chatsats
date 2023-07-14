@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Sats to Chat</title>
-        <meta property="og:image" content="https://en.gravatar.com/userimage/237327008/28668aaf31e588cafb89c0e727f661b5.png">
-        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="alby:name" content="Chat for Sats">
-    </head>
-    <body>
-        <div class="container">
-            <div class="banner">
-                <h5>Pay with Satoshis :: getalby.com</h5>
-                <hr>
-                <br>
-                <div class="spinner-container">
-                    <div class="spinner"></div>
-                </div>
-            </div>
-            <div>
-                <h2>⚡ OpenAI Chat ⚡</h2>
-            </div>
-            <br>
-            <hr>
-            <h4 id="reply"></h4>
-            <br>
-            <div class="row">
-                <input
-                    class="block w-full placeholder-gray-500 dark:placeholder-neutral-600 pr-0 border-0 focus:ring-0 bg-white dark:bg-black dark:text-white"
-                    placeholder="prompt"
-                    autocomplete="off"
-                    value=""
-                    name="uprompt"
-                    id="uprompt"
-                >
-                <button class="save-img">Send Question</button>
-            </div>
-        </div>
-        <script src="script.js"></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.js"></script>
-        <script src="scriptcodefmt.js"></script> -->
-    </body>
+<head>
+  <meta charset="utf-8">
+  <title>Sats to Chat</title>
+  <meta property="og:image" content="https://en.gravatar.com/userimage/237327008/28668aaf31e588cafb89c0e727f661b5.png">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="alby:name" content="Chat for Sats">
+
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#" class="active">About</a>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="banner">
+      <h5>Pay with Satoshis :: getalby.com</h5>
+      <hr>
+      <br>
+      <div class="spinner-container">
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <div>
+      <h2>⚡ OpenAI Chat ⚡</h2>
+    </div>
+    <br>
+    <hr>
+    <h4 id="reply"></h4>
+    <br>
+    <div class="input-box">
+        <textarea class="input-box" placeholder="Prompt" name="uprompt" id="uprompt"></textarea>
+    </div>
+    <button class="save-img">Send Question</button>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>
