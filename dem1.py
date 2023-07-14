@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response
 from langchain import ConversationChain
 from langchain.chat_models import ChatOpenAI
 import uvicorn
@@ -20,7 +20,6 @@ def generate_secret():
 # check preimage
 @app.post("/preimages")
 async def create_preimage(preimage: str, response: Response):
-    
     # Generate a single-use secret/token
     secret = generate_secret()
     # Set the secret as a cookie
