@@ -92,18 +92,22 @@ async def verify_secret(request: Request, call_next):
         request._json = json_data
 
         response = await call_next(request)
+
+
+        # Make the query/queries
+        langchain_router = LangchainRouter(
+            langchain_url="/chat",
+            langchain_object=ConversationChain(llm=ChatOpenAI(temperature=0), verbose=True),
+            streaming_mode=0,
+        )
+        app.include_router(langchain_router)
+
+
         return response
 
     raise HTTPException(status_code=403, detail="Invalid secret")
 
 
-# Make the query/queries
-langchain_router = LangchainRouter(
-    langchain_url="/chat",
-    langchain_object=ConversationChain(llm=ChatOpenAI(temperature=0), verbose=True),
-    streaming_mode=0,
-)
-app.include_router(langchain_router)
 
 # main
 if __name__ == "__main__":
