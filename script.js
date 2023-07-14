@@ -70,6 +70,7 @@ async function sendQuery() {
     const url = '/chat';
 
     console.log(JSON.stringify({ "input": uprompt }))
+    const secretValue = getCookieValue('secret');
 
     fetch(url, {
 
