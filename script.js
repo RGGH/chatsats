@@ -56,6 +56,9 @@ async function sendQuery() {
 
     console.log(JSON.stringify({ "input": uprompt }));
 
+    // Show the spinner
+    document.querySelector('.spinner-container').style.display = 'block';
+
 
     fetch(url, {
         method: "POST",
@@ -75,9 +78,13 @@ async function sendQuery() {
             var newStr = str.replace(/(\r\n|\n|\r)/gm, "");
             console.log(newStr);
             document.getElementById("reply").innerHTML = newStr;
+            // Hide the spinner
+            document.querySelector('.spinner-container').style.display = 'none';
         })
         .catch(error => {
             console.error(error);
+            // Hide the spinner
+            document.querySelector('.spinner-container').style.display = 'none';
         });
 }
 
