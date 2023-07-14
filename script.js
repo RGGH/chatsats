@@ -133,12 +133,15 @@ function hideSpinner() {
 
 // About Page
 const aboutLink = document.querySelector('.nav-links a:last-child');
+const container2 = document.querySelector('.container-2');
 
 aboutLink.addEventListener('click', () => {
     const container = document.querySelector('.container');
     container.innerHTML = '<p>You need to add getalby extension for your device</p><br>' +
         'Browser : <a href="https://getalby.com/#alby-extension">getalby.com</a><br>' +
         ' <br>or for Android or Apple iOS <a href="https://breez.technology/mobile/">breez</a>';
+
+    container2.style.display = 'none';
 });
 
 // Home Page
@@ -147,8 +150,21 @@ const container = document.querySelector('.container');
 let initialContent = container.innerHTML;
 
 homeLink.addEventListener('click', () => {
+    const container = document.querySelector('.container');
     container.innerHTML = initialContent;
+    // Show container-2
+    container2.style.display = 'block';
 });
+
+function printReply(reply) {
+    const replyElement = document.getElementById('reply');
+    const inputBox = document.querySelector('.input-box');
+
+    replyElement.textContent = reply;
+
+    // Hide input box (prompt)
+    inputBox.style.display = 'none';
+}
 
 
 
