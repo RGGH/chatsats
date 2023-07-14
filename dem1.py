@@ -19,7 +19,7 @@ async def create_preimage(preimage: str, response: Response):
 
     # Set the secret as a cookie
     response.set_cookie(key="secret", value=secret, max_age=3600)
-    
+
     # Connect to the database
     conn = sqlite3.connect("preim.db")
 
@@ -52,7 +52,6 @@ async def create_preimage(preimage: str, response: Response):
         # Delete the oldest record
         cursor.execute("DELETE FROM preimages WHERE id = (SELECT MIN(id) FROM preimages)")
 
-
     # Insert the new preimage into the database
     cursor.execute("INSERT INTO preimages (preimage) VALUES (?)", (preimage,))
 
@@ -61,7 +60,7 @@ async def create_preimage(preimage: str, response: Response):
     conn.close()
 
     # preimage is good and not already in DB - return ok!
-    return {"message": "Secret sent to browser"}
+    return
 
 
 # Make the query/queries
