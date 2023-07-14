@@ -38,6 +38,15 @@ async def create_preimage(preimage: str):
         conn.close()
         raise HTTPException(status_code=409, detail="Preimage already exists")
 
+    # Count the total number of records in the table
+    cursor.execute("SELECT COUNT(*) FROM preimages")
+    total_records = cursor.fetchone()[0]
+
+    if total_records >= 999999:
+        # Delete the oldest record
+        cursor.execute("DELETE FROM preimages WHERE id = (SELECT MIN(id) FROM preimages)")
+
+
     # Insert the new preimage into the database
     cursor.execute("INSERT INTO preimages (preimage) VALUES (?)", (preimage,))
 
