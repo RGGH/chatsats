@@ -56,10 +56,7 @@ async function sendQuery() {
 
     console.log(JSON.stringify({ "input": uprompt }));
 
-    // Show the spinner
-    document.querySelector('.spinner-container').style.display = 'block';
-
-
+    showSpinner();
     fetch(url, {
         method: "POST",
         headers: {
@@ -79,12 +76,14 @@ async function sendQuery() {
             console.log(newStr);
             document.getElementById("reply").innerHTML = newStr;
             // Hide the spinner
-            document.querySelector('.spinner-container').style.display = 'none';
+            hideSpinner();
+
         })
         .catch(error => {
             console.error(error);
             // Hide the spinner
-            document.querySelector('.spinner-container').style.display = 'none';
+            hideSpinner();
+
         });
 }
 
@@ -120,5 +119,15 @@ function getCookieValue(cookieName) {
     }
     return null;
 }
+
+function showSpinner() {
+    document.querySelector('.spinner-container').style.display = 'flex';
+}
+
+// Hide the spinner
+function hideSpinner() {
+    document.querySelector('.spinner-container').style.display = 'none';
+}
+
 
 saveImgBtn.addEventListener("click", saveImage);
