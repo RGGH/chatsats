@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Webpage</title>
+</head>
+<body>
+    <h1>Welcome to My Webpage</h1>
+
+    <script>
+        // Generate a new session ID
+        function generateSessionId() {
+            const session_id = Math.random().toString(36).substr(2, 10);
+            return session_id;
+        }
+
+        // Retrieve the session ID from local storage or generate a new one
+        let session_id = localStorage.getItem('session_id');
+        if (!session_id) {
+            session_id = generateSessionId();
+            localStorage.setItem('session_id', session_id);
+        }
+
+        // Use the session ID for further processing or API requests
+        console.log('Session ID:', session_id);
+    </script>
+</body>
+</html>

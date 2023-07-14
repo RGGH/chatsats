@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response
 from langchain import ConversationChain
 from langchain.chat_models import ChatOpenAI
 import uvicorn
@@ -13,7 +13,13 @@ app = FastAPI()
 
 # check preimage
 @app.post("/preimages")
-async def create_preimage(preimage: str):
+async def create_preimage(preimage: str, response: Response):
+    # Generate a single-use secret/token
+    secret = generate_secret()
+
+    # Set the secret as a cookie
+    response.set_cookie(key="secret", value=secret, max_age=3600)
+    
     # Connect to the database
     conn = sqlite3.connect("preim.db")
 
@@ -55,7 +61,7 @@ async def create_preimage(preimage: str):
     conn.close()
 
     # preimage is good and not already in DB - return ok!
-    return
+    return {"message": "Secret sent to browser"}
 
 
 # Make the query/queries
