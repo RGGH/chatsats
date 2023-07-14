@@ -11,6 +11,9 @@ from lanarky import LangchainRouter
 load_dotenv()
 app = FastAPI()
 
+# Store the secrets in memory
+secrets_set = set()
+
 
 def generate_secret():
     # Generate a random secret using the secrets module
