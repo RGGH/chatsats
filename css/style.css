@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url('bg.jpg');
+    background-image: url('images/bg.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -35,10 +35,11 @@ body {
 .navbar a:hover {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
+
 .navbar-text {
-  color: white;
-  font-weight: bold;
-  margin-left: auto;
+    color: white;
+    font-weight: bold;
+    margin-left: auto;
 }
 
 .container {
@@ -71,7 +72,7 @@ body {
     }
 }
 
-.container-2{
+.container-2 {
     padding: 20px;
     margin-top: 10px;
     margin-bottom: 0px;
@@ -113,30 +114,35 @@ body {
 }
 
 .input-box {
-  height: 3em; /* Adjust the height as needed */
-  resize: vertical;
-  width: 80%;
-  padding: 10px;
-  margin: 0 auto 10px; /* Updated */
+    height: 3em;
+    /* Adjust the height as needed */
+    resize: vertical;
+    width: 80%;
+    padding: 10px;
+    margin: 0 auto 10px;
+    /* Updated */
 }
 
 @media (max-width: 600px) {
-  .input-box {
-    height: 4em; /* Adjust the height as needed for mobile */
-  }
-}
-
-  
-  @media (max-width: 600px) {
     .input-box {
-      height: 4em; /* Adjust the height as needed for mobile */
+        height: 4em;
+        /* Adjust the height as needed for mobile */
     }
-  }
+}
+
 
 @media (max-width: 600px) {
-  .input-box {
-    height: 4em; /* Adjust the height as needed for mobile */
-  }
+    .input-box {
+        height: 4em;
+        /* Adjust the height as needed for mobile */
+    }
+}
+
+@media (max-width: 600px) {
+    .input-box {
+        height: 4em;
+        /* Adjust the height as needed for mobile */
+    }
 }
 
 input#uprompt {
