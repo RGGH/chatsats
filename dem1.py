@@ -67,6 +67,7 @@ async def create_preimage(preimage: str, response: Response):
     # preimage is good and not already in DB - return ok!
     return
 
+# middleware to get cookie secret to protect the API
 @app.middleware("http")
 async def verify_secret(request: Request, call_next):
     if request.url.path == "/preimages":
