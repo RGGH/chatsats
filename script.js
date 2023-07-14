@@ -80,6 +80,7 @@ async function sendQuery() {
         },
         body: JSON.stringify({
             "input": uprompt,
+            "secret":secretValue
         })
 
     })
