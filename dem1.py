@@ -80,6 +80,11 @@ async def verify_secret(request: Request, call_next):
 
     # Verify if the secret exists in memory
     if secret in secrets_set:
+        # Remove the secret from the JSON payload
+        json_data = await request.json()
+        json_data.pop("secret", None)
+        request = request.copy(update={"json": json_data})
+
         response = await call_next(request)
         return response
 
