@@ -67,6 +67,23 @@ async def create_preimage(preimage: str, response: Response):
     # preimage is good and not already in DB - return ok!
     return
 
+@app.middleware("http")
+async def verify_secret(request: Request, call_next):
+    if request.url.path == "/preimages":
+        # Skip the middleware for the /preimages endpoint
+        response = await call_next(request)
+        return response
+
+    secret = request.cookies.get("secret")
+
+    # Verify if the secret exists in memory
+    if secret in secrets_set:
+        response = await call_next(request)
+        return response
+
+    raise HTTPException(status_code=403, detail="Invalid secret")
+
+
 
 # Make the query/queries
 langchain_router = LangchainRouter(
