@@ -99,7 +99,7 @@ async function sendQuery() {
 }
 
 
-
+// check the preimage has not been seen before
 async function postPreimage(preimage) {
     const url = '/preimages';
 
@@ -112,6 +112,9 @@ async function postPreimage(preimage) {
         });
 
         if (response.ok) {
+            // Usage
+            const secretValue = getCookieValue('secret');
+            console.log(secretValue);  // Output the secret value to the console
             return response.json();
         } else {
             throw new Error(`Error: ${response.statusText}`);
@@ -120,6 +123,19 @@ async function postPreimage(preimage) {
         throw new Error(`Error: ${error.message}`);
     }
 }
+
+// cookie - secret 
+function getCookieValue(cookieName) {
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith(`${cookieName}=`)) {
+      return cookie.substring(cookieName.length + 1);
+    }
+  }
+  return null;
+}
+
 
 
 
