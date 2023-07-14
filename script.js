@@ -131,4 +131,25 @@ function hideSpinner() {
 }
 
 
+// About Page
+const aboutLink = document.querySelector('.nav-links a:last-child');
+
+aboutLink.addEventListener('click', () => {
+    const container = document.querySelector('.container');
+    container.innerHTML = '<p>You need to add getalby extension for your device</p><br>' +
+        'Browser : <a href="https://getalby.com/#alby-extension">getalby.com</a><br>' +
+        ' <br>or for Android or Apple iOS <a href="https://breez.technology/mobile/">breez</a>';
+});
+
+// Home Page
+const homeLink = document.querySelector('.nav-links a:first-child');
+const container = document.querySelector('.container');
+let initialContent = container.innerHTML;
+
+homeLink.addEventListener('click', () => {
+    container.innerHTML = initialContent;
+});
+
+
+
 saveImgBtn.addEventListener("click", saveImage);
