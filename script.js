@@ -51,42 +51,42 @@ const saveImage = async () => {
 };
 
 async function sendQuery() {
-    var uprompt = document.getElementById('uprompt').value;
-    const url = '/chat';
+  var uprompt = document.getElementById('uprompt').value;
+  const url = '/chat';
 
-    console.log(JSON.stringify({ "input": uprompt }));
+  console.log(JSON.stringify({ "input": uprompt }));
 
-    showSpinner();
-    fetch(url, {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "input": uprompt,
-
-        })
+  showSpinner();
+  fetch(url, {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "input": uprompt,
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            var str = JSON.stringify(data.response);
-            var newStr = str.replace(/(\r\n|\n|\r)/gm, "").replace(/"([^"]+)"/g, '$1');
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      var str = JSON.stringify(data.response);
+      var newStr = str.replace(/(\r\n|\n|\r)/gm, "").replace(/"([^"]+)"/g, '$1');
 
-            console.log(newStr);
-            document.getElementById("reply").innerHTML = newStr;
-            // Hide the spinner
-            hideSpinner();
-
-        })
-        .catch(error => {
-            console.error(error);
-            // Hide the spinner
-            hideSpinner();
-
-        });
+      console.log(newStr);
+      document.getElementById("reply").innerHTML = newStr;
+      // Hide the spinner
+      hideSpinner();
+      // Hide the input box (prompt)
+      document.getElementById('uprompt').style.display = 'none';
+    })
+    .catch(error => {
+      console.error(error);
+      // Hide the spinner
+      hideSpinner();
+    });
 }
+
 
 async function postPreimage(preimage) {
     const url = '/preimages';
@@ -165,6 +165,9 @@ function printReply(reply) {
     // Hide input box (prompt)
     inputBox.style.display = 'none';
 }
+
+
+
 
 
 
