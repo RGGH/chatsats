@@ -75,6 +75,7 @@ async def create_preimage(preimage: str, response: Response):
 
 
 # middleware to get cookie secret to protect the API
+# middleware to get cookie secret to protect the API
 @app.middleware("http")
 async def verify_secret(request: Request, call_next):
     if request.url.path == "/preimages":
@@ -89,9 +90,19 @@ async def verify_secret(request: Request, call_next):
         # Remove the secret from the JSON payload
         json_data = await request.json()
         json_data.pop("secret", None)
-        request = request.copy(update={"json": json_data})
 
-        response = await call_next(request)
+        # Create a new Request object with updated JSON data
+        updated_request = Request(
+            request.scope,
+            request.receive,
+            request.app,
+            request.method,
+            request.url,
+            request.headers,
+            json=json_data,
+        )
+
+        response = await call_next(updated_request)
         return response
 
     raise HTTPException(status_code=403, detail="Invalid secret")
