@@ -25,6 +25,9 @@ async def create_preimage(preimage: str, response: Response):
     # Set the secret as a cookie
     response.set_cookie(key="secret", value=secret, max_age=3600)
 
+    # Add the secret to the set of secrets in memory
+    secrets_set.add(secret)
+
     # Connect to the database
     conn = sqlite3.connect("preim.db")
 
