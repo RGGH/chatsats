@@ -169,6 +169,14 @@ hr {
     border-color: orange;
 }
 
+.reply {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 60%;
+    margin-bottom: 20px;
+    border-color: rgb(53, 52, 52);
+}
+
 .spinner-container {
     display: none;
     align-items: center;
