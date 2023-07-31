@@ -10,11 +10,12 @@ The Sqlite database holds all recent preimages to prevent an attempt at double s
 
   `raise HTTPException(status_code=409, detail="Preimage already exists")`
 
+<hr>
 * [X] WebLN payment
 * [ ] Redo API with LangChain Tools (Langcorn)
 * [ ] Vector Database : Qdrant/Docker - Similarity Search
 * [ ] Safe Search (Google, others)
 * [ ] Accessibilty
-* [ ] Test
+* [X] Test
 
 !['flow'](images/sats_chat.png)
