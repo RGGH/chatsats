@@ -4,9 +4,7 @@
 
 The idea was to make a basic example to allow anyone from a mainly Python background to build the backend with Python and only need the minimum vanilla JavaScript.
 
-Getalby provides the WebLN functionality whilst Nginx provides the reverse proxy and Lanarky gives the LangChain functionality with an endpoint to use
-
-ChatOpenAI
+Getalby provides the WebLN functionality whilst Nginx provides the reverse proxy and Lanarky gives the LangChain functionality with an endpoint to use: ChatOpenAI
 
 The Sqlite database holds all recent preimages to prevent an attempt at double spend. The Nginx proxy limits requests to the API solely from the localhost.</p>
 
