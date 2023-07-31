@@ -17,6 +17,6 @@ The Sqlite database holds all recent preimages to prevent an attempt at double s
 * [ ] Accessibilty
 * [X] Test
 
-[<img src="https://i.ytimg.com/vi/l-RTcj9Uh5M/maxresdefault.jpg" width="50%">](https://youtu.be/l-RTcj9Uh5M "Chat for Sats")
+[<img src="images/sats_chat.png" width="50%">](https://youtu.be/l-RTcj9Uh5M "Chat for Sats")
 
 !['flow'](images/sats_chat.png)
