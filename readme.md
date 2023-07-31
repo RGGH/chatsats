@@ -8,7 +8,7 @@ Getalby provides the WebLN functionality whilst Nginx provides the reverse proxy
 
 The Sqlite database holds all recent preimages to prevent an attempt at double spend. The Nginx proxy limits requests to the API solely from the localhost.</p>
 
-  raise HTTPException(status_code=409, detail="Preimage already exists")
+  `raise HTTPException(status_code=409, detail="Preimage already exists")`
 
 * [X] WebLN payment
 * [ ] Redo API with LangChain Tools (Langcorn)
